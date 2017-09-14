@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--p5 core library CDN-->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.min.js"></script>
+
+        <script>
+
+            var x = [], 
+                y = [], 
+                xSpeed = [],
+                ySpeed = [];
+            
+            var quantity = 10;    
+                
+            // p5 calls setup() exactly once when the canvas loads
+            function setup() {
+                createCanvas(500, 500);
+                rectMode(CENTER);
+                for (var i= 0; i < quantity; i++) {
+                    x[i] = random(width);
+                    y[i] = random(height);
+                    xSpeed[i] = random(-2.5,2.5);
+                    ySpeed[i] = random(-2.5,2.5);
+                }
+             }
+
+             function draw() {
+                 background(200);
+                 
+                 for (var i= 0; i < quantit; i++) {
+                 x[i] = x[i] + xSpeed[i];
+                 y[i] = y[i] + ySpeed[i];
+                 //
+                 if (x[i] > width - 5 || x[i] < 5){
+                     xSpeed[i] = xSpeed[i] * -1;
+                 }
+
+                if (y[i] < 5){
+                   ySpeed[i] = ySpeed[i] * -1;
+                }
+
+                if (y[i] >= height - 40 && abs(mouseX-x[i]) < width/12 && y[i] < height - 40 + ySpeed[i]) {
+                    ySpeed[i] = ySpeed[i] *-1
+                }
+                
+                ellipse(x[i], y[i], 10, 10);
+                rect(mouseX,height-30, width/6, 10, 5);
+                 }
+                 }
+
+
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>
