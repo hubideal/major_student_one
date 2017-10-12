@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+    </head>
+    <style type="text/css">
+        body {
+            font-family: sans-serif;
+        }
+    </style>
+
+    <body>
+        <div id='target'></div>
+        
+        <script>
+            var graph = d3.select('#target')
+                .append('svg')
+                .attr('width', window.innerWidth)
+                .attr('height', window.innerHeight);
+            
+            d3.csv('wiid.csv', function(error, data) {
+                if (error) throw error;
+                var updated = d3.nest().key(function(d) {
+                    return d.Country;
+                }).sortKeys(d3.ascending).entries(data);
+                console.log(updated);
+                svg(updated);
+            });
+            
+             function svg(updated) {
+                var gini2000 = [];
+                for(var i in updated) {
+                    console.log(updated[i]);
+                    if (updated[i].key == "Argentina") 
+                        gini2000.push(updated[i].key.Gini);
+                        console.log(updated[i].key.Gini);
+                }
+                var max = d3.max(gini2000);
+                console.log(max);
+                console.log(gini2000);
+                
+                var x = d3.scaleLinear()
+                    .domain([0, updated.length])
+                    .range([0, window.innerWidth]);
+                    
+                var y = d3.scaleLinear()
+                    .domain([0, max])
+                    .range([0, window.innerHeight]);
+                    
+                graph.append('g')
+                    .attr('id', 'group');
+                    
+                var group = graph.select('#group')
+                    .selectAll('g')
+                    .data(updated)
+                    .enter()
+                    .append('g')
+                    .attr('x', function(d, i) { return x(i); })
+                    .attr('transform', function(d, i) {
+            			return 'translate(' + x(i) + ', ' + 0 + ')';
+            		});
+            		
+            group.append('rect')
+            	    .attr('class', 'bar')
+            	    .attr('y', function(d, i) { return window.innerHeight-y(d.operatingExpenses); })
+            	    .attr('width', function(d, i) { return x(1); })
+            	    .attr('height', function(d, i) { return y(d.operatingExpenses); });
+            	    
+            group.append('text')
+            	    .text(function(d) { return d.name; })
+            	    .attr('transform', function(d, i) { return 'translate(0, ' + window.innerHeight + ')rotate(-90)'; })
+            	    .attr('transform', function(d, i) { return 'translate(' + (x(1)/2) + ', ' + (window.innerHeight-y(d.operatingExpenses)) + ')rotate(-90)'; });
+                    
+             }       
+
+        </script>
+    </body>
+</html>
+
+//for (var j=0; j<count2; j++) {
+//                console.log(dataLine[j].sourceText);
+//                fill(80,80,80);
+//                if (dataLine[j].sourceText == "Fishlow et al. 1993") {
+//                    var giniNum = Number(dataLine[j].giniText);
+//                    var giniHeight = ((height*.25)+(height*.5)*(1-(giniNum/100)));
+//                    rect((width/16)*counter + (width/40), giniHeight, width/22, (height-(giniHeight+(height*.25))));
+//                    text(dataLine[j].yearText, (width/16)*counter + (width/25), height*.78 );
+//                    text(giniNum, (width/16)*counter + (width/25), giniHeight-(height/50));
+//                    counter ++;
+//                }
+
+//<!DOCTYPE html>
+//<html>
+//    <head>
+//        <script src="https://d3js.org/d3.v4.min.js"></script>
+//    </head>
+//
+//    <body>
+//        <script>
+//            d3.select('body')
+//                .append('svg')
+//                .attr('width', window.innerWidth)
+//                .attr('height', window.innerHeight);
+//            
+//            var svg = d3.select('svg');
+//
+//            d3.csv('wiid.csv', function(error, data) {
+//                
+//                console.log(data);
+//                var updated = d3.nest().key(function(d) {
+//                return d.country;
+//                }).sortKeys(d3.ascending).entries(data);
+//                console.log(updated);
+//                
+//                data.forEach(function(d, i) {
+//                   svg.append('text')
+//                        if ((d.country == 'Argentina' && year == "1974")|| (country == 'Argentina' && year == "1975") || (country == 'Argentina' && year == "1976")) 
+//                        
+//                        
+//                        
+//                        
+//                        .text(i + ') ' + d.Country + ' | ' + d.Year + ' | ' + d.Gini + ' | ' + d.Source)
+//                        .attr('x', window.innerWidth/2)
+//                        .attr('y', (i+1) * 30)
+//                        .style('text-anchor','middle')
+//                        .style('fill', function() {
+//                            
+//                                return 'rgb(0, 255, 0)';
+//                            else                                
+//                                return 'darkgray'
+//                       }); 
+//})
+//                
+//                
+//                
+//                
+////if ((country == 'Argentina' && year == "1974") || (country == 'Argentina' && year == "1975") || (country == 'Argentina' && year == "1976") || (country == 'Argentina' && year == "1977") || (country == 'Argentina' && year == "1978") || (country == 'Argentina' && year == "1979") || (country == 'Argentina' && year == "1980") || (country == 'Argentina' && year == "1981") || (country == 'Argentina' && year == "1982") || (country == 'Argentina' && year == "1983") || (country == 'Argentina' && year == "1984")|| (country == 'Argentina' && year == "1985")|| (country == 'Argentina' && year == "1986"|| (country == 'Argentina' && year == "1987")|| (country == 'Argentina' && year == "1988")))
+//          
+//                
+////                svg.selectAll('.item')
+////                    .data(data)
+////                    .enter()
+////                    //.text(i + ') ' + d.amount + ' | ' + d.unit + ' | ' + d.item + ' | ' + d.source)
+////                    .append('text')
+////                    .text(function(d, i) {return d.Country +  ') ' + d.Year +   ' | ' + d.Gini + ' | ' + d.Source})
+////                    .attr('x', window.innerWidth/2)
+////                    .attr('y', function(d, i) {return (i+1)*30})
+////                    .style('text-anchor', 'middle')
+////                    .style('fill', function(d) {
+////                            if (d.source == 'store')
+////                                return 'rgb(0, 255, 0)';
+////                            
+////                            else
+////                                return 'darkgray';
+////                    });
+////                
+//           });
+//            
+//
+//        </script>
+//    </body>
+//</html>//

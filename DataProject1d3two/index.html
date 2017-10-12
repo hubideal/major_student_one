@@ -18,7 +18,7 @@
                 .attr('width', window.innerWidth)
                 .attr('height', window.innerHeight);
             
-            d3.csv('wiid2.csv', function(error, data) {
+            d3.json('wiid2.json', function(error, data) {
                 if (error) throw error;
                 
                 svg(data);
@@ -27,7 +27,7 @@
              function svg(data) {
                 var tmp = [];
                 for(var i in data) {
-                    tmp.push(data[i].Gini, data[i].Year);
+                    tmp.push(data[i].Gini);
                 }
                 var max = d3.max(tmp);
                 console.log(max);
@@ -37,7 +37,7 @@
                     .range([0, window.innerWidth]);
                     
                 var y = d3.scaleLinear()
-                    .domain([0, (max+40)])
+                    .domain([0, max])
                     .range([0, window.innerHeight]);
                     
                 graph.append('g')
@@ -60,7 +60,7 @@
             	    .attr('height', function(d, i) { return y(d.Gini); });
             	    
             group.append('text')
-            	    .text(function(d) { return d.name; })
+            	    .text(function(d) { return d.Country; })
             	    .attr('transform', function(d, i) { return 'translate(0, ' + window.innerHeight + ')rotate(-90)'; })
             	    .attr('transform', function(d, i) { return 'translate(' + (x(1)/2) + ', ' + (window.innerHeight-y(d.Gini)) + ')rotate(-90)'; });
                     
