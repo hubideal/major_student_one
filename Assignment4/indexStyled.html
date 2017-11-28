@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Cabin:600|Roboto|Roboto+Condensed" rel="stylesheet">
+    </head>
+    <style type="text/css">
+    
+    .countryLabel {
+    font-family: sans-serif;
+    }
+    #plot {
+        width: 95%;
+        margin-top: 2%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        padding-top: 1%;
+    }
+    
+    body {
+            background-color: rgb(249,247,253);
+        }
+        
+    svg {
+            font-family: sans-serif;
+        }
+    
+    h1 {
+    width: 95%;
+    text-align: Center;
+    font-family: 'Cabin', sans-serif;
+    font-size: 2.1em;
+        }
+        
+    .radioButtons {
+        width: 95%;
+        font-family: Roboto Condensed;
+        text-align: CENTER;
+        font-size: 1.2em;
+    }
+    .x-axisBottom {
+        color: rgb(249,247,253);
+    }
+        
+        /*@media (max-width: 699px) {*/
+        /*    h1 {*/
+        /*    width: 700px;*/
+        /*    text-align: left;*/
+        /*    font-family: 'Roboto Condensed', sans-serif;*/
+        /*    font-size: 1.1em;*/
+        /*    margin-bottom: 3px;*/
+        /*    margin-left: 11%;*/
+        /*    margin-right: auto;*/
+        /*}*/
+        /*.intro {*/
+        /*    font-family: 'Roboto Condensed', sans-serif;*/
+        /*    width: 700px;*/
+        /*    margin-left: 14%;*/
+        /*}*/
+        /*    #plot {*/
+        /*    width: 700px;*/
+        /*    margin-left: 11%;*/
+        /*}*/
+        /*p {*/
+        /*    line-height: 157%;*/
+        /*    font-size: 1em;*/
+        /*}*/
+        /*footer {*/
+        /*    margin-top: 2px;*/
+        /*    margin-left: 14%;*/
+        /*}*/
+        /*.map {*/
+        /*    width: 12%;*/
+        /*    height: auto;*/
+        /*}*/
+        /*.dots {*/
+        /*    width: 18%;*/
+        /*    height: auto;*/
+        /*}*/
+        /*}*/
+        
+     
+        
+        /* @media (min-width: 700px) and (max-width: 1499px) {.intro {*/
+        /*    font-family: 'Roboto Condensed', sans-serif;*/
+        /*    width: 1100px;*/
+        /*    margin-left: 14%;*/
+        /*}*/
+        /*     h1 {*/
+        /*    width: 1100px;*/
+        /*    text-align: left;*/
+        /*    font-family: 'Roboto Condensed', sans-serif;*/
+        /*    font-size: 2em;*/
+        /*    margin-bottom: 15px;*/
+        /*    margin-left: 11%;*/
+        /*    margin-right: auto;*/
+        /*}*/
+        /*#plot {*/
+        /*    width: 1200px;*/
+        /*    margin-left: 11%;*/
+        /*}*/
+        /*p {*/
+        /*    line-height: 157%;*/
+        /*    font-size: 1em;*/
+        /*}*/
+        /*footer {*/
+            
+        /*    margin-left: 14%;*/
+        /*}*/
+        /*.map {*/
+        /*    width: 8%;*/
+        /*    height: auto;*/
+        /*}*/
+        /*.dots {*/
+        /*    width: 15%;*/
+        /*    height: auto;*/
+        /*}*/
+        /*.school {*/
+        /*    width: 20%;*/
+        /*}*/
+        /* }*/
+        
+        /* @media (min-width: 1500px) {.intro {*/
+        /*    font-family: 'Roboto Condensed', sans-serif;*/
+        /*    width: 1700px;*/
+        /*    margin-left: 14%;*/
+        /*}*/
+        /*h1 {*/
+        /*    width: 1700px;*/
+        /*    text-align: left;*/
+        /*    font-family: 'Roboto Condensed', sans-serif;*/
+        /*    font-size: 2.7em;*/
+        /*    margin-bottom: 25px;*/
+        /*    margin-left: 11%;*/
+        /*    margin-right: auto;*/
+        /*}*/
+        
+        /* #plot {*/
+        /*    width: 1700px;*/
+        /*    margin-left: 11%;*/
+        /*}*/
+        
+        /*p {*/
+        /*    line-height: 157%;*/
+        /*    font-size: 1.3em;*/
+        /*}*/
+        
+        /*footer {*/
+        /*    margin-top: 18px;*/
+        /*    margin-left: 14%;*/
+        /*}*/
+        /*.map {*/
+        /*    width: 8%;*/
+        /*    height: auto;*/
+        /*}*/
+        /*.dots {*/
+        /*    width: 11.5%;*/
+        /*    height: auto;*/
+        /*}*/
+            
+        /*}*/
+        
+        
+        
+        
+        /*.x-axis {*/
+        /*        fill: none;*/
+        /*        font-size: 1em;*/
+        /*        stroke: rgb(100,100,100);*/
+        /*        shape-rendering: crispEdges;*/
+        /*}*/
+        
+         
+        /*.radioButtons {*/
+        /*    margin-left: 14%;*/
+        /*    font-size: 1.2em;*/
+        /*}*/
+
+        /*.y-axis {*/
+        /*    fill: none;*/
+        /*    stroke: rgb(100,100,100);*/
+        /*    font-size: 1em;*/
+        /*    shape-rendering: crispEdges;*/
+        /*}*/
+        
+        
+        /*.form {*/
+        /*    font-family: 'Roboto Condensed', sans-serif;*/
+        /*}*/
+        /*label {*/
+     
+        /*    font-family: 'Roboto Condensed', sans-serif;*/
+        /*}*/
+        /*.country {*/
+        /*    text-size: 0.25em;*/
+        /*}*/
+        
+        
+        /*.source {*/
+        /*    font-family: 'Roboto Condensed', sans-serif;*/
+        /*    font-size: .95em;*/
+        /*    line-height: 100%;*/
+        /*}*/
+        
+        
+        
+        
+    
+    </style>
+    
+    <body>
+        <div class='title'><h1>Gender Differences in Expected & Mean Years of Schooling in Sub-Saharan Africa</h1></div>
+        <form>
+  <div class="radioButtons">
+  <label><input type="radio" name="mode" value="grouped" checked>Expected Years of School</label>
+  <span>&nbsp&nbsp</span>
+  <label><input type="radio" name="mode" value="stacked">Mean Years of School</label>
+  <!--<span>&nbsp&nbsp</span>-->
+  <!--<label><input type="radio" name="mode" value="difference">Difference in Expected & Mean Years of School</label>-->
+</div>
+</div>
+</form>
+        
+         <div id="plot"></div>
+        <script>
+            var pad = 70;
+            var w = screen.width*.95;
+            var h = screen.height*.7;
+            
+            d3.csv("edSubSahAfrCont.csv", function(error, data) {
+              if (error) throw error;
+              
+            
+            var svg = d3.select("#plot")
+            .append("svg")
+            .attr("height", h)
+            .attr("width", w);
+            
+
+              
+            var xScale = d3.scaleLinear()
+            .domain([0, 32])  
+            .range([pad, w - pad]);
+            
+            
+            // var yScale = d3.scaleLinear()
+            // .domain([0, d3.max(data, function(d) { return d['mExp2013']; })])
+            // .range([h - pad, pad]);
+            
+            var yScale = d3.scaleLinear()
+            .domain([0, 14])
+            .range([h - pad, pad]);
+            
+            
+            var xAxis = d3.axisBottom(xScale);
+            var yAxis = d3.axisLeft(yScale);
+            
+            
+            var mSquare = svg.selectAll("rect")
+            .data(data)
+            .enter()
+            .append("rect")
+                .attr("class", "maleSquare")
+                .attr("x", function(d) {return xScale(d['count'])-7.5;})  
+                .attr("y", function(d) {return yScale(d['mExp2013'])-7.5;})
+                .attr("width", 15)
+                .attr("height", 15)
+                .attr("fill", "purple")
+                .attr('visibility', 'visible')
+                .attr("opacity", 0.8)
+                .on('click', function(){d3.selectAll('rect').attr('visibility','hidden'); svg.selectAll('.bar').attr('visibility', 'visible');});
+                
+            
+            var fSquare = svg.selectAll("rect2")
+            .data(data)
+            .enter()
+            .append("rect")
+                .attr("class", "femaleSquare")
+                .attr("x", function(d) {return xScale(d['count'])+7.5;})  
+                .attr("y", function(d) {return yScale(d['fExp2013'])-7.5;})
+                .attr("width", 15)
+                .attr("height", 15)
+                .attr("fill", "orange")
+                .attr('visibility', 'visible')
+                .attr("opacity", 0.8)
+                .on('click', function(){d3.selectAll('rect').attr('visibility','hidden'); svg.selectAll('.bar').attr('visibility', 'visible');});
+            
+            // var mDifference = svg.selectAll("polyMale")
+            //     .data(data)
+            //     .enter()
+            //     .append('polygon')
+            //     .attr('class', 'polygon')
+            //     .attr("points", (function(d) {return xScale(d['count'])-7.5;}), (function(d) {return yScale(d['mExp2013'])-7.5;})  (function(d) {return xScale(d['count'])+7.5;}), (function(d) {return yScale(d['mExp2013'])-7.5;})   (function(d) {return xScale(d['count'])+7.5;}), (function(d) {return yScale(d['mMean2013'])+7.5;})   (function(d) {return xScale(d['count'])-7.5;}), (function(d) {return yScale(d['mMean2013'])+7.5;}))
+            //     .attr("fill", "blue")
+            //     .attr("opacity", 0.1);
+            
+            // var fDifference = svg.selectAll("polyFemale")
+            //     .data(data)
+            //     .enter()
+            //     .append('polygon')
+            //     .attr('class', 'polygon')
+            //     .attr("points", (function(d) {return xScale(d['count'])+7.5;}), (function(d) {return yScale(d['fExp2013'])-7.5;})  (function(d) {return xScale(d['count'])+22.5;}), (function(d) {return yScale(d['yExp2013'])-7.5;})  (function(d) {return xScale(d['count'])+ 22.5;}), (function(d) {return yScale(d['yMean2013'])+7.5;})  (function(d) {return xScale(d['count'])+7.5;}), (function(d) {return yScale(d['yMean2013'])+7.5;}))
+            //     .attr("fill", "gold")
+            //     .attr("opacity", 0.1);
+            
+            var mDifference = svg.selectAll("mRectDif")
+                .data(data)
+                .enter()
+                .append('rect')
+                .attr("x", function(d) {return xScale(d['count'])-7.5;})  
+                .attr("y", function(d) {return yScale(d['mExp2013'])-7.5;})
+                .attr("height", function(d) {return yScale(d['mMean2013']) - yScale(d['mExp2013']);})
+                .attr('class', 'polygon')
+                .attr('width', 15)
+                .attr("fill", "purple")
+                .attr('visibility', 'hidden')
+                .attr("opacity", 0);
+            
+            var fDifference = svg.selectAll("fRectDif")
+                .data(data)
+                .enter()
+                .append('rect')
+                .attr("x", function(d) {return xScale(d['count'])+7.5;})  
+                .attr("y", function(d) {return yScale(d['fExp2013'])-7.5;})
+                .attr("height", function(d) {return yScale(d['fMean2013']) - yScale(d['fExp2013']);})
+                .attr('class', 'polygon')
+                .attr('width', 15)
+                .attr("fill", "orange")
+                .attr('visibility', 'hidden')
+                .attr("opacity", 0);
+            
+            var xLabel = svg.selectAll('text') 
+                .data(data)
+                .enter()
+                .append('text')
+                .text(function(d) { return d.Country; })
+                .attr('transform', function(d, i) { return 'translate('+ (xScale(d['count'])+11)  + " , "  + (yScale(d['mExp2013'])-20) + ') rotate(-90) '; })
+                // .attr('transform', function(d, i) { return 'translate(' + (x(1)/2) + ', ' + (window.innerHeight-y(d.operatingExpenses)) + ')rotate(-90)'; });
+                .attr("fill", "black")
+                .attr('class', 'countryLabel')
+                .attr('visibility', 'visible')
+                .attr('opacity', .45);
+                
+            
+            var fBar = svg.selectAll('barRect')
+                .data(data)
+                .enter()
+                .append('rect')
+                .attr("x", function(d) {return xScale(d['count'])+7.5;})  
+                .attr("y", function(d) {return yScale(d['fMean2013'])-7.5;})
+                .attr("height", function(d) {return ((h - pad + 7.5) - yScale(d['fMean2013']));})
+                .attr('class', 'bar')
+                .attr('width', 15)
+                .attr("fill", "orange")
+                .attr('visibility', 'hidden')
+                .attr("opacity", 0.5)
+                .on('click', function(){d3.selectAll('rect').attr('visibility','visible'); svg.selectAll('.bar').attr('visibility', 'hidden');});
+            
+            var mBar = svg.selectAll('barRect')
+                .data(data)
+                .enter()
+                .append('rect')
+                .attr("x", function(d) {return xScale(d['count'])-7.5;})  
+                .attr("y", function(d) {return yScale(d['mMean2013'])-7.5;})
+                .attr("height", function(d) {return ((h - pad + 7.5) - yScale(d['mMean2013']));})
+                .attr('class', 'bar')
+                .attr('width', 15)
+                .attr("fill", "purple")
+                .attr('visibility', 'hidden')
+                .attr("opacity", 0.5)
+                .on('click', function(){d3.selectAll('rect').attr('visibility','visible'); svg.selectAll('.bar').attr('visibility', 'hidden');});
+                
+             
+                
+
+            var bottomAxis = svg.append("g")
+                .attr("class", "x-axis")
+                .attr("transform", "translate(0," + (h - pad) + ")")
+                .attr('class', 'x-axisBottom')
+                .call(xAxis);
+                
+            bottomAxis.selectAll("text").remove();
+    
+
+            svg.append("g")
+                .attr("class", "y-axis")
+                .attr("transform", "translate(" + pad +", 0)")
+                .call(yAxis);
+
+
+            
+            // d3.selectAll('.countryLabel').on('mouseover', function() {
+            //      d3.select(this)
+            //         .attr('opacity', .95)
+            //         .attr('visibility', 'visible');
+            // });
+            
+             
+            
+           
+            // d3.selectAll('.countryLabel').on('mouseout', function() {
+            //     d3.select(this).attr('opacity', .35);
+            // });
+            
+            d3.selectAll('.countryLabel').on('click', function() {
+                 d3.select(this)
+                    .attr('opacity', .95)
+                    .attr('visibility', 'visible');
+            });
+            
+            
+            
+            
+            
+            // .function(){d3.selectAll('.bar').attr('visibility', 'visible');}
+            
+            // d3.selectAll('rect')
+            // .on('click', function(){});
+            
+        
+                
+            
+           
+            // d3.selectAll('.countryLabel').on('mouseout', function() {
+            //     d3.select(this).attr('opacity', .35);
+            // });
+            
+             
+            
+            d3.selectAll("input")
+                .on("change", changed);
+                
+            var timeout = d3.timeout(function() {
+                d3.select("input[value=\"grouped\"]")
+                .property("checked", true)
+                .dispatch("change");
+            }, 1000000);
+            
+            function changed() {
+                timeout.stop();
+                if (this.value === "grouped") transitionGrouped();
+                else if (this.value === "difference") transitionDifference();
+                else transitionStacked();
+            }
+        
+    function transitionGrouped() {
+                
+            var xScale = d3.scaleLinear()
+            .domain([0, 32])  
+            .range([pad, w - pad]);
+            
+            
+            var yScale = d3.scaleLinear()
+            .domain([0, 14])
+            .range([h - pad, pad]);
+            
+            
+          
+            
+            var xAxis = d3.axisBottom(xScale);
+            var yAxis = d3.axisLeft(yScale);
+            
+            
+            
+           mSquare.transition()
+                .duration(1750)
+                .attr("x", function(d) {return xScale(d['count'])-7.5;})  
+                .attr("y", function(d) {return yScale(d['mExp2013'])-7.5;})
+                .attr("width", 15)
+                .attr("height", 15)
+                .attr("fill", "purple")
+                .attr('visibility', 'visible')
+                .attr("opacity", 0.7);
+                // .on('click', function(){d3.selectAll('rect').attr('visibility','visible'); svg.selectAll('.bar').attr('visibility', 'hidden');});
+                
+            
+            fSquare.transition()
+                    .duration(1750)
+                    .attr("x", function(d) {return xScale(d['count'])+7.5;})  
+                    .attr("y", function(d) {return yScale(d['fExp2013'])-7.5;})
+                    .attr("width", 15)
+                    .attr("height", 15)
+                    .attr("fill", "orange")
+                    .attr('visibility', 'visible')
+                    .attr("opacity", 0.7);
+                    // .on('click', function(){d3.selectAll('rect').attr('visibility','visible'); svg.selectAll('.bar').attr('visibility', 'hidden');});
+                    
+                    
+            mDifference.transition()
+            .duration(1750)
+                .attr("x", function(d) {return xScale(d['count'])-7.5;})  
+                .attr("y", function(d) {return yScale(d['mExp2013'])-7.5;})
+                .attr("height", function(d) {return yScale(d['mMean2013']) - yScale(d['mExp2013']);})
+                .attr('class', 'polygon')
+                .attr('width', 15)
+                .attr("fill", "purple")
+                .attr('visibility', 'visible')
+                .attr("opacity", 0.25);
+            
+            fDifference.transition()
+            .duration(1550)
+                .attr("x", function(d) {return xScale(d['count'])+7.5;})  
+                .attr("y", function(d) {return yScale(d['fExp2013'])-7.5;})
+                .attr("height", function(d) {return yScale(d['fMean2013']) - yScale(d['fExp2013']);})
+                .attr('class', 'polygon')
+                .attr('width', 15)
+                .attr("fill", "orange")
+                .attr('visibility', 'visible')
+                .attr("opacity", 0.25); 
+            
+            // var fDifference = svg.selectAll("fRectDif")
+            //     .data(data)
+            //     .enter()
+            //     .append('rect')
+            //     .attr("x", function(d) {return xScale(d['count'])+7.5;})  
+            //     .attr("y", function(d) {return yScale(d['fExp2013'])-7.5;})
+            //     .attr("height", function(d) {return yScale(d['fMean2013']) - yScale(d['fExp2013']);})
+            //     .attr('class', 'polygon')
+            //     .attr('width', 15)
+            //     .attr("fill", "orange")
+            //     .attr('visibility', 'hidden')
+            //     .attr("opacity", 0.1);
+                    
+            xLabel.transition()
+                  .duration(1550)
+                // .data(data)
+                // .enter()
+                // .append('text')
+                // .text(function(d) { return d.Country; })
+                // // .attr('x',function(d) {return xScale(d['count'])-7.5;})
+                // // .attr('y',function(d) {return yScale(d['mExp2013'])-40;})
+                .attr('transform', function(d, i) { return 'translate('+ (xScale(d['count'])+11)  + " , "  + (yScale(d['mExp2013'])-20) + ') rotate(-90) '; })
+                // .attr('transform', function(d, i) { return 'translate(' + (x(1)/2) + ', ' + (window.innerHeight-y(d.operatingExpenses)) + ')rotate(-90)'; });
+                .attr("fill", "black")
+                .attr('opacity', .35)
+                .attr('class', 'countryLabel')
+                .attr('visibility', 'visible')
+                .attr('opacity', .35);;
+
+            // svg.append("g")
+            //     .attr("class", "x-axis")
+            //     .attr("transform", "translate(0," + (h - pad) + ")")
+            //     .call(xAxis);
+    
+
+            svg.append("g")
+                .attr("class", "y-axis")
+                .attr("transform", "translate(" + pad +", 0)")
+                .call(yAxis);
+
+
+            
+        //   d3.selectAll('.countryLabel').on('mouseover', function() {
+        //          d3.select(this)
+        //             .attr('opacity', .95)
+        //             .attr('visibility', 'visible');
+        //     });
+            
+           
+        //     d3.selectAll('.countryLabel').on('mouseout', function() {
+        //         d3.select(this).attr('opacity', .35);
+        //     });
+}
+
+function transitionStacked() {
+                
+              var xScale = d3.scaleLinear()
+            .domain([0, 32])  
+            .range([pad, w - pad]);
+            
+            
+            var yScale = d3.scaleLinear()
+            .domain([0, 14])
+            .range([h - pad, pad]);
+            
+            var xAxis = d3.axisBottom(xScale);
+            var yAxis = d3.axisLeft(yScale);
+            
+            
+            
+            mSquare.transition()
+                .duration(1550)
+                .attr("x", function(d) {return xScale(d['count'])-7.5;})  
+                .attr("y", function(d) {return yScale(d['mMean2013'])-7.5;})
+                .attr("width", 15)
+                .attr("height", 15)
+                .attr("fill", "purple")
+                .attr('visibility', 'visible')
+                .attr("opacity", 0.7);
+                
+            
+            fSquare.transition()
+                    .duration(1550)
+                    .attr("x", function(d) {return xScale(d['count'])+7.5;})  
+                    .attr("y", function(d) {return yScale(d['fMean2013'])-7.5;})
+                    .attr("width", 15)
+                    .attr("height", 15)
+                    .attr("fill", "orange")
+                    .attr('visibility', 'visible')
+                    .attr("opacity", 0.7);
+                   
+            
+            mDifference.transition()
+            .duration(2750)
+                .attr("x", function(d) {return xScale(d['count'])-7.5;})  
+                .attr("y", function(d) {return yScale(d['mExp2013'])-7.5;})
+                .attr("height", function(d) {return yScale(d['mMean2013']) - yScale(d['mExp2013']);})
+                .attr('class', 'polygon')
+                .attr('width', 15)
+                .attr("fill", "purple")
+                .attr('visibility', 'visible')
+                .attr("opacity", 0.25);
+            
+            fDifference.transition()
+            .duration(2750)
+                .attr("x", function(d) {return xScale(d['count'])+7.5;})  
+                .attr("y", function(d) {return yScale(d['fExp2013'])-7.5;})
+                .attr("height", function(d) {return yScale(d['fMean2013']) - yScale(d['fExp2013']);})
+                .attr('class', 'polygon')
+                .attr('width', 15)
+                .attr("fill", "orange")
+                .attr('visibility', 'visible')
+                .attr("opacity", 0.25); 
+                    
+             xLabel.transition()
+                   .duration(1750)
+                // .data(data)
+                // .enter()
+                // .append('text')
+                // .text(function(d) { return d.Country; })
+                // // .attr('x',function(d) {return xScale(d['count'])-7.5;})
+                // // .attr('y',function(d) {return yScale(d['mExp2013'])-40;})
+                .attr('transform', function(d, i) { return 'translate('+ (xScale(d['count'])+11)  + " , "  + (yScale(d['mMean2013'])-20) + ') rotate(-90) '; })
+                // .attr('transform', function(d, i) { return 'translate(' + (x(1)/2) + ', ' + (window.innerHeight-y(d.operatingExpenses)) + ')rotate(-90)'; });
+                .attr("fill", 'black')
+                .attr('class', 'countryLabel')
+                .attr('visibility', 'visible')
+                .attr('opacity', .35);
+
+           
+    
+
+            svg.append("g")
+                .attr("class", "y-axis")
+                .attr("transform", "translate(" + pad +", 0)")
+                .call(yAxis);
+
+
+            
+}
+
+// function transitionDifference() {
+                
+//               var xScale = d3.scaleLinear()
+//             .domain([0, 32])  
+//             .range([pad, w - pad]);
+            
+            
+//             var yScale = d3.scaleLinear()
+//             .domain([0, 14])
+//             .range([h - pad, pad]);
+            
+            
+          
+            
+//             var xAxis = d3.axisBottom(xScale);
+//             var yAxis = d3.axisLeft(yScale);
+            
+            
+            
+//             mSquare.transition()
+//                 .duration(1750)
+//                 .attr("x", function(d) {return xScale(d['count'])-7.5;})  
+//                 .attr("y", function(d) {return yScale(d['mExp2013'])-7.5;})
+//                 .attr("width", 15)
+//                 .attr("height", 15)
+//                 .attr("fill", "purple")
+//                 .attr("opacity", 0.7)
+            
+            
+//             fSquare.transition()
+//                     .duration(1750)
+//                     .attr("x", function(d) {return xScale(d['count'])+7.5;})  
+//                     .attr("y", function(d) {return yScale(d['fExp2013'])-7.5;})
+//                     .attr("width", 15)
+//                     .attr("height", 15)
+//                     .attr("fill", "orange")
+//                     .attr("opacity", 0.7) 
+            
+//             // mDifference.transition() 
+//             //     .duration(1750)
+//             //     .attr("points", (function(d) {return xScale(d['count'])-7.5;}), (function(d) {return yScale(d['mExp2013'])-7.5;})  (function(d) {return xScale(d['count'])+7.5;}), (function(d) {return yScale(d['mExp2013'])-7.5;})   (function(d) {return xScale(d['count'])+7.5;}), (function(d) {return yScale(d['mMean2013'])+7.5;}))
+//             //     // .attr("points", (function(d) {return xScale(d['count'])-7.5;}), (function(d) {return yScale(d['mExp2013'])-7.5;})  (function(d) {return xScale(d['count'])+7.5;}), (function(d) {return yScale(d['mExp2013'])-7.5;})   (function(d) {return xScale(d['count'])+7.5;}), (function(d) {return yScale(d['mMean2013'])+7.5;})   (function(d) {return xScale(d['count'])-7.5;}), (function(d) {return yScale(d['mMean2013'])+7.5;}))
+//             //     .attr("fill", "blue")
+//             //     .attr("opacity", 0.8)
+//             //     .attr('visibility', 'visible');
+                
+//                 mDifference.transition() 
+//                 .duration(1750)
+//                 .attr("x", function(d) {return xScale(d['count'])-7.5;})  
+//                 .attr("y", function(d) {return yScale(d['mExp2013'])-7.5;})
+//                 .attr('width', 15)
+//                 .attr("height", function(d) {return yScale(d['mExp2013'])-7.5;} - function(d) {return yScale(d['mMean2013'])-7.5;})
+//                 .attr("fill", "purple")
+//                 .attr("opacity", 0.8)
+//                 .attr('visibility', 'visible');
+                
+                
+            
+//             // fDifference.transition()
+//             //     .duration(1750)
+//             //     .attr("points", (function(d) {return xScale(d['count'])+7.5;}), (function(d) {return yScale(d['fExp2013'])-7.5;})  (function(d) {return xScale(d['count'])+22.5;}), (function(d) {return yScale(d['yExp2013'])-7.5;})  (function(d) {return xScale(d['count'])+ 22.5;}), (function(d) {return yScale(d['yMean2013'])+7.5;})  (function(d) {return xScale(d['count'])+7.5;}), (function(d) {return yScale(d['yMean2013'])+7.5;}))
+//             //     // .attr("points", (function(d) {return xScale(d['count'])+7.5;}), (function(d) {return yScale(d['fExp2013'])-7.5;})  (function(d) {return xScale(d['count'])+22.5;}), (function(d) {return yScale(d['yExp2013'])-7.5;})  (function(d) {return xScale(d['count'])+ 22.5;}), (function(d) {return yScale(d['yMean2013'])+7.5;})  (function(d) {return xScale(d['count'])+7.5;}), (function(d) {return yScale(d['yMean2013'])+7.5;})  (function(d) {return xScale(d['count'])+7.5;}), (function(d) {return yScale(d['fExp2013'])-7.5;}))
+//             //     .attr("fill", "gold")
+//             //     .attr("opacity", 0.8)
+//             //     .attr('visibility', 'visible');
+                
+//             fDifference.transition() 
+//                 .duration(1750)
+//                 .attr("x", function(d) {return xScale(d['count'])-7.5;})  
+//                 .attr("y", function(d) {return yScale(d['fExp2013'])-7.5;})
+//                 .attr('width', 15)
+//                 .attr("height", function(d) {return yScale(d['fExp2013'])-7.5;} - function(d) {return yScale(d['fMean2013'])-7.5;})
+//                 .attr("fill", "purple")
+//                 .attr("opacity", 0.8)
+//                 .attr('visibility', 'visible');    
+    
+                    
+//             
+           
+    
+
+//             svg.append("g")
+//                 .attr("class", "y-axis")
+//                 .attr("transform", "translate(" + pad +", 0)")
+//                 .call(yAxis);
+
+
+            
+//             d3.selectAll('.dataSquare').on('mouseover', function() {
+//                  d3.select("svg")
+//                     .append('text')
+//                     .attr('class',"country")
+//                     .attr('id','_temp')
+//                     .text(d3.select(this).datum().Country)
+//                     .attr('x',d3.select(this).attr('x'))
+//                     .attr('y',d3.select(this).attr('y'))
+//                     .attr("fill", "black")
+//                     .attr('class', 'label')
+//                     .attr('visibility', 'visible');
+//             });
+//             d3.selectAll('.dataSquare').on('mouseout', function() {
+//                 d3.select('#_temp').remove();
+//             });
+// }
+            });           
+        </script>
+        
+    </body>
+    
+</html>
