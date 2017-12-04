@@ -7,9 +7,17 @@ his project explores the differences between the expected years of schooling and
 
 ### References
 Income Inequality Trends in Sub-Saharan Africa:  Divergence, Determinants, and Consequences. Edited by Giovanni Andrea Cornia Ayodele Odusola, Haroon Bhorat, & Pedro Conceçåo: United Nations Development Programme, 2017.
+
+
 Lee, Barro and. "Unesco Institute for Statistics." http://stats.uis.unesco.org/: UNESCO Institute for Statistics, 2013.
+
+
 Ombati, V. and O. Mokua. "Gender Inequality in Education in Sub-Saharan Africa." Journal of Women’s Entrepreneurship and Education, no. 3-4 (2012): 114-36.
+
+
 Senadza, B. "Education Inequality in Ghana: Gender and Spatial Dimensions." Journal of Economic Studies 39, no. 6 (2012): 724-39.
+
+
 Van Fleet, J.W., K. Watkins and L. Greubel. "Africa Learning Barometer.  ."  https://www.brookings.edu/interactives/africa-learning-barometer/.
 
 
