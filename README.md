@@ -1,6 +1,6 @@
 # Gender Differences in Expected & Mean Years of Schooling in Sub-Saharan Africa
 
-![https://github.com/hubideal/major_student_one/blob/master/Assignment4/GenderEdDif.jpg?raw=true](https://hubideal.github.io./educationAfrica/index.html) Format: ![jpg](https://hubideal.github.io./educationAfrica/index.html)
+![/Assignment4/GenderEdDif.jpg](https://github.com/hubideal/major_student_one/blob/master/Assignment4/GenderEdDif.jpg?raw=true)
 
 [Gender Differences in Sub-Saharan Africa](https://hubideal.github.io./educationAfrica/index.html)
 
